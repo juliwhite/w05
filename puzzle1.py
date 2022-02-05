@@ -73,7 +73,7 @@ def display(x):
         print(' / \\')
         print()
         print('^^^^^')
-        print("Game is over :(")
+        #print("Game is over :(")
 
         
 
@@ -95,7 +95,7 @@ def update():
         print(i, end = '')
 
 while True:
-    #display()
+    
     guess = input("\nGuess a letter [a-z]: ")
 
     if guess.lower() in word:
@@ -111,12 +111,13 @@ while True:
             wrong_guess.append(guess)
             if len(wrong_guess) >= 0:
                 display(len(wrong_guess))
+                if len(wrong_guess) == 7:
+                    print("Game is over :(")
+                    break
 
         else:
             print('You already guess that letter.')
 
-    
-    #if len(wrong_guess) > 
 
     if '_' not in right_guesses:
         print("\ncorrect!")
