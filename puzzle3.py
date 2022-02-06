@@ -19,6 +19,7 @@ class Game:
 
     def _do_output(self):
         self._word._get_word()
+        self._parachute._body(self._word._get_wrong_guesses())
 
     def _get_input(self):
         ask_player = input("\nGuess a letter [a-z]: ")
@@ -27,7 +28,7 @@ class Game:
     
     def _do_update(self):
         self._word._check_word(self._player.get_input())
-        self._parachute.body(self._word._get_wrong_guesses)
+        self._parachute._body(self._word._get_wrong_guesses())
 
 class Word:
     def __init__(self) -> None:
@@ -52,10 +53,12 @@ class Word:
             if letter not in self._wrong_guesses:
                 self._wrong_guesses.append(letter)
                 #return(len(self._wrong_guesses))
-        print(self._wrong_guesses)
+        #print(len(self._wrong_guesses))
     
     def _get_wrong_guesses(self):
-        return len(self._wrong_guesses)
+        wrong_words = self._wrong_guesses
+        #self._wrong_guesses = len(self._wrong_guesses)
+        return len(wrong_words)
 
 class Player:
     def __init__(self) -> None:
@@ -69,11 +72,9 @@ class Player:
         print(self._player_input + " set")
 
 class Parachute:
-    def __init__(self) -> None:
-        self._x = 9
-    
-    def body(self, x):
+    def _body(self, x):
         if x == 0:
+            print('')
             print(' ___')
             print('/___\\')
             print('\\   /')
@@ -84,6 +85,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 1:
+            print('')
             print('/___\\')
             print('\\   /')
             print(' \\ /')
@@ -93,6 +95,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 2:
+            print('')
             print(' ___')
             print('\\   /')
             print(' \\ /')
@@ -102,6 +105,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 3:
+            print('')
             print('\\   /')
             print(' \\ /')
             print('  O')
@@ -110,6 +114,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 4:
+            print('')
             print('    /')
             print(' \\ /')
             print('  O')
@@ -118,6 +123,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 5:
+            print('')
             print(' \\ /')
             print('  O')
             print(' /|\\')
@@ -125,6 +131,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 6:
+            print('')
             print('   /')
             print('  O')
             print(' /|\\')
@@ -132,6 +139,7 @@ class Parachute:
             print()
             print('^^^^^')
         elif x == 7:
+            print('')
             print('  x')
             print(' /|\\')
             print(' / \\')
@@ -139,7 +147,4 @@ class Parachute:
             print('^^^^^')
 
 p = Game()
-#p._do_output()
-#p._get_input()
-#p._do_update()
 p.start_jumper()
